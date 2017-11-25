@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Mon perso</title>
+	<link rel="stylesheet" href="monperso.css" />
+	<script src="Perso.js"></script>
+</head>
+
+<body>
+	<div class="interface">
+		<header>
+			<h1>Torann Bofer</h1>
+		</header>
+		<footer>En bas</footer>
+		<section class="body colonnes">
+			<div class="colonne">
+				<article id="informations">
+					<header>Informations</header>
+					<ul>
+						<li>
+							<h3>Class &amp; Level</h3>
+							<div id="paladin.level" data-value="8">Paladin 8</div><em class="page">82</em></li>
+						<li>
+							<h3>Background</h3>
+							<div>Charlatan</div><em class="page">128</em></li>
+						<li>
+							<h3>Player Name</h3>
+							<div>Martin Boudreau</div>
+						</li>
+						<li>
+							<h3>Race</h3>
+							<div>Mountain Dwarf</div><em class="page">18</em></li>
+						<li>
+							<h3>Alignment</h3>
+							<div>Lawful Neutral</div>
+						</li>
+						<li>
+							<h3>Experience Points</h3>
+							<div>0</div>
+						</li>
+					</ul>
+				</article>
+				<article id="statistics">
+					<header>Statistics</header>
+					<ul>
+						<li id="str">
+							<h3>Strength</h3>
+							<div class="stat">
+								<input type="text" id="str.stat" value="17" />
+							</div>
+							<div>
+								<label for="str.modifier">Modifier:</label>
+								<input type="text" id="str.modifier" value="" class="modifier" data-formula="⌊(str.stat-10)/2⌋" />
+							</div>
+							<div>
+								<label for="str.savingthrow">Saving Throw:</label>
+								<input type="text" id="str.savingthrow" value="" class="savingthrow" data-formula="str.modifier" />
+							</div>
+						</li>
+						<li id="dex">
+							<h3>Dexterity</h3>
+							<div class="stat">
+								<input type="text" id="dex.stat" value="12" />
+							</div>
+							<div>
+								<label for="dex.modifier">Modifier:</label>
+								<input type="text" id="dex.modifier" value="" class="modifier" data-formula="⌊(dex.stat-10)/2⌋" />
+							</div>
+							<div>
+								<label for="dex.savingthrow">Saving Throw:</label>
+								<input type="text" id="dex.savingthrow" value="" class="savingthrow" data-formula="dex.modifier" />
+							</div>
+						</li>
+						<li id="con">
+							<h3>Constitution</h3>
+							<div class="stat">
+								<input type="text" id="con.stat" value="12" />
+							</div>
+							<div>
+								<label for="con.modifier">Modifier:</label>
+								<input type="text" id="con.modifier" value="" class="modifier" data-formula="⌊(con.stat-10)/2⌋" />
+							</div>
+							<div>
+								<label for="con.savingthrow">Saving Throw:</label>
+								<input type="text" id="con.savingthrow" value="" class="savingthrow" data-formula="con.modifier" />
+							</div>
+						</li>
+						<li id="int">
+							<h3>Intelligence</h3>
+							<div class="stat">
+								<input type="text" id="int.stat" value="9" />
+							</div>
+							<div>
+								<label for="int.modifier">Modifier:</label>
+								<input type="text" id="int.modifier" value="" class="modifier" data-formula="⌊(int.stat-10)/2⌋" />
+							</div>
+							<div>
+								<label for="int.savingthrow">Saving Throw:</label>
+								<input type="text" id="int.savingthrow" value="" class="savingthrow" data-formula="int.modifier" />
+							</div>
+						</li>
+						<li id="wis">
+							<h3>Wisdom</h3>
+							<div class="stat">
+								<input type="text" id="wis.stat" value="10" />
+							</div>
+							<div>
+								<label for="wis.modifier">Modifier:</label>
+								<input type="text" id="wis.modifier" value="" class="modifier" data-formula="⌊(wis.stat-10)/2⌋" />
+							</div>
+							<div>
+								<label for="wis.savingthrow">Saving Throw:</label>
+								<input type="text" id="wis.savingthrow" value="" class="savingthrow" data-formula="wis.modifier" />
+							</div>
+						</li>
+						<li id="cha">
+							<h3>Charisma</h3>
+							<div class="stat">
+								<input type="text" id="cha.stat" value="16" />
+							</div>
+							<div>
+								<label for="cha.modifier">Modifier:</label>
+								<input type="text" id="cha.modifier" value="" class="modifier" data-formula="⌊(cha.stat-10)/2⌋" />
+							</div>
+							<div>
+								<label for="cha.savingthrow">Saving Throw:</label>
+								<input type="text" id="cha.savingthrow" value="" class="savingthrow" data-formula="cha.modifier" />
+							</div>
+						</li>
+					</ul>
+				</article>
+			</div>
+			<div class="colonne">
+				<article id="others">
+					<header>Others</header>
+					<ul class="row">
+						<li>
+							<input type="text" name="proficiency_bonus" id="proficiency_bonus" value="3" />
+							<label for="proficiency_bonus">Proficiency bonus</label>
+						</li>
+						<li>
+							<input type="text" name="armor_class" id="armor_class" value="17" />
+							<label for="armor_class">Armor Class</label>
+						</li>
+						<li>
+							<span class="clickdice">1d20 + <span data-formula="dex.modifier"></span></span>
+							<label for="initiative">Initiative</label>
+						</li>
+						<li>
+							<input type="text" name="inspiration" id="inspiration" value="0" />
+							<label for="inspiration">Inspiration</label>
+						</li>
+						<li>
+							<input type="text" name="passive_wisdom" id="passive_wisdom" data-formula="10+skill.perception" />
+							<label for="passive_wisdom">Passive Wisdom</label>
+						</li>
+						<li>
+							<input type="text" name="speed" id="speed" value="25" />
+							<label for="speed">Speed</label>
+						</li>
+						<li>
+							<input type="text" name="maximum_hit_points" id="maximum_hit_points" value="64" />
+							<label for="maximum_hit_points">Maximum Hit Points</label>
+							<input type="text" name="actual_hit_points" id="actual_hit_points" style="width:8em;" value="64" />
+							<label for="actual_hit_points">Actual Hit Points</label>
+						</li>
+						<li>
+							<input type="text" name="spellcasting_ability_modifier" id="spellcasting_ability_modifier" data-formula="cha.modifier" />
+							<label for="spellcasting_ability_modifier">Spellcasting Ability Modifier</label>
+						</li>
+					</ul>
+				</article>
+				<article id="skills">
+					<header>Skills</header>
+					<ul class="row">
+						<li>
+							<input type="checkbox" name="skill.acrobatics.checked" id="skill.acrobatics.checked" />
+							<input type="text" id="skill.acrobatics" data-formula="dex.modifier+skill.acrobatics.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Acrobatics <small>(Dex)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.animal_handling.checked" id="skill.animal_handling.checked" />
+							<input type="text" id="skill.animal_handling" data-formula="wis.modifier+skill.animal_handling.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Animal Handling <small>(Wis)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.arcana.checked" id="skill.arcana.checked" />
+							<input type="text" id="skill.arcana" data-formula="dex.modifier+skill.arcana.checked" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Arcana <small>(Int)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.athletics.checked" id="skill.athletics.checked" checked="checked" />
+							<input type="text" id="skill.athletics" data-formula="str.modifier+skill.athletics.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Athletics <small>(Str)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.deception.checked" id="skill.deception.checked" checked="checked" />
+							<input type="text" id="skill.deception" data-formula="cha.modifier+skill.deception.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Deception <small>(Cha)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.history.checked" id="skill.history.checked" />
+							<input type="text" id="skill.history" data-formula="int.modifier+skill.history.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">History <small>(Int)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.insight.checked" id="skill.insight.checked" />
+							<input type="text" id="skill.insight" data-formula="wis.modifier+skill.insight.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Insight <small>(Wis)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.intimidation.checked" id="skill.intimidation.checked" />
+							<input type="text" id="skill.intimidation" data-formula="cha.modifier+skill.intimidation.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Intimidation <small>(Cha)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.investigation.checked" id="skill.investigation.checked" />
+							<input type="text" id="skill.investigation" data-formula="int.modifier+skill.investigation.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Investigation <small>(Int)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.medicine.checked" id="skill.medicine.checked" />
+							<input type="text" id="skill.medicine" data-formula="wis.modifier+skill.medicine.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Medicine <small>(Wis)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.nature.checked" id="skill.nature.checked" />
+							<input type="text" id="skill.nature" data-formula="int.modifier+skill.nature.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Nature <small>(Int)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.perception.checked" id="skill.perception.checked" />
+							<input type="text" id="skill.perception" data-formula="dex.modifier+skill.perception.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Perception <small>(Wis)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.performance.checked" id="skill.performance.checked" />
+							<input type="text" id="skill.performance" data-formula="cha.modifier+skill.performance.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Performance <small>(Cha)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.persuasion.checked" id="skill.persuasion.checked" checked="checked" />
+							<input type="text" id="skill.persuasion" data-formula="cha.modifier+skill.persuasion.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Persuasion <small>(Cha)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.religion.checked" id="skill.religion.checked" />
+							<input type="text" id="skill.religion" data-formula="int.modifier+skill.religion.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Religion <small>(Int)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.sleight_of_hand.checked" id="skill.sleight_of_hand.checked" checked="checked" />
+							<input type="text" id="skill.sleight_of_hand" data-formula="dex.modifier+skill.sleight_of_hand.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Sleight of Hand <small>(Dex)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.stealth.checked" id="skill.stealth.checked" />
+							<input type="text" id="skill.stealth" data-formula="dex.modifier+skill.stealth.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Stealth <small>(Dex)</small></b>
+						</li>
+						<li>
+							<input type="checkbox" name="skill.survival.checked" id="skill.survival.checked" />
+							<input type="text" id="skill.survival" data-formula="wis.modifier+skill.survival.checked*proficiency_bonus" />
+							<b class="clickrandom" data-path="../*[type=text][id^=skill]">Survival <small>(Wis)</small></b>
+						</li>
+					</ul>
+				</article>
+				<article id="inventory">
+					<header>Inventory</header>
+					<ul>
+						<li>
+							<input class="quantite" type="number" value="1" /><b>Chapelet</b></li>
+						<li>
+							<input class="quantite" type="number" value="1" /><b><a href="#boots_of_striding_and_springing">Bottes magiques</a></b></li>
+						<li>
+							<input class="quantite" type="number" value="1" /><b>Oeil du géant</b></li>
+						<li>
+							<input class="quantite" type="number" value="1" /><b>Anneau Magique de protection +1</b>
+							<input type="checkbox" data-bonus="savingthrow:1;ac:1" />
+						</li>
+						<li>
+							<input class="quantite" type="number" value="1" /><b>Splintmail</b></li>
+						<li>
+							<input class="quantite" type="number" value="2" /><b>Potion of Healing (<span class="de">2d4+2</span>)</b></li>
+						<li>
+							<input class="quantite" type="number" value="1" /><b>Potion of Greater Healing (<span class="de">4d4+4</span>)</b></li>
+						<li>
+							<input class="quantite" type="number" value="1" /><b>Greatsword (<span class="de">2d6+strmod</span>)</b></li>
+						<li>
+							<input class="quantite" type="number" value="1" /><b>Whip (<span class="de">2d6+strmod</span>)</b></li>
+					</ul>
+				</article>
+				<article id="equipment">
+					<header>Equipment</header>
+					<ul>
+						<li class="clickattack" data-price="50gp" data-weight="6lb">
+							<b class="clickdice" data-dice="2d6+str.modifier+proficiency_bonus">Great Sword</b>
+							<span class="dice">2d6 slashing</span>
+							<span><span>heavy</span>, <span>two handed</span></span>
+							<em class="page">149</em>
+						</li>
+						<li class="clickattack" data-price="2gp" data-weight="3lb">
+							<b>Whip</b>
+							<span class="dice">1d4 slashing</span>
+							<span><span>finess</span>, <span>reach</span></span>
+							<em class="page">149</em>
+						</li>
+						<li class="clickattack" data-price="5gp" data-weight="2lb">
+							<b>Handaxe</b>
+							<span class="dice">1d6 slashing</span>
+							<span><span>Light</span>, <span>Throw 20/60</span></span>
+							<em class="page">149</em>
+						</li>
+						<li data-price="75gp" data-limitation="str.stat=13">
+							<b>Chain Mail</b>
+							<span class="armor_class">16</span>
+							<em class="page">145</em>
+						</li>
+					</ul>
+				</article>
+				<article id="spells">
+					<header>Spells</header>
+
+					<ol>
+						<li>
+							<h3>Niveau 1</h3>
+							<ul>
+								<li data-page="216" class="oath">
+									<label>
+										<input type="checkbox" /><span>Bane</span></label>
+								</li>
+								<li data-page="219" class="">
+									<label>
+										<input type="checkbox" /><span>Bless @</span></label>
+								</li>
+								<li data-page="223" class="">
+									<label>
+										<input type="checkbox" /><span>Command</span></label>
+								</li>
+								<li data-page="224" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Compelled Duel ¢</span></label>
+								</li>
+								<li data-page="230" class="">
+									<label>
+										<input type="checkbox" /><span>*** Cure Wounds</span></label>
+								</li>
+								<li data-page="231" class="">
+									<label>
+										<input type="checkbox" /><span>Detect Evil and Good</span></label>
+								</li>
+								<li data-page="231" class="">
+									<label>
+										<input type="checkbox" /><span>Detect Magic @</span></label>
+								</li>
+								<li data-page="231" class="">
+									<label>
+										<input type="checkbox" /><span>Detect Poison and Disease @</span></label>
+								</li>
+								<li data-page="234" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Divine Favor ¢</span></label>
+								</li>
+								<li data-page="250" class="">
+									<label>
+										<input type="checkbox" /><span>Heroism</span></label>
+								</li>
+								<li data-page="251" class="bonus oath">
+									<label>
+										<input type="checkbox" /><span>Hunter's Mark ¢</span></label>
+								</li>
+								<li data-page="270" class="">
+									<label>
+										<input type="checkbox" /><span>Protection from Good and Evil @</span></label>
+								</li>
+								<li data-page="270" class="">
+									<label>
+										<input type="checkbox" /><span>Purify Food and Drink @</span></label>
+								</li>
+								<li data-page="274" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Searing Smith @</span></label>
+								</li>
+								<li data-page="275" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Shield of Faith</span></label>
+								</li>
+								<li data-page="282" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Thunderous Smite</span></label>
+								</li>
+								<li data-page="289" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Wrathful Smite</span></label>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h3>Niveau 2</h3>
+							<ul>
+								<li data-page="211" class="">
+									<label>
+										<input type="checkbox" /><span>Aid @</span></label>
+								</li>
+								<li data-page="219" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Branding Smite ¢</span></label>
+								</li>
+								<li data-page="240" class="bonus" data-casting-time="10min">
+									<label>
+										<input type="checkbox" /><span>Find Steed</span></label>
+								</li>
+								<li data-page="251" class="bonus oath">
+									<label>
+										<input type="checkbox" /><span>Hold Person @</span></label>
+								</li>
+								<li data-page="255" class="">
+									<label>
+										<input type="checkbox" /><span>Lesser Restoration</span></label>
+								</li>
+								<li data-page="256" class="">
+									<label>
+										<input type="checkbox" /><span>Locate Object @</span></label>
+								</li>
+								<li data-page="257" class="bonus">
+									<label>
+										<input type="checkbox" /><span>Magic Weapon @</span></label>
+								</li>
+								<li data-page="260" class="bonus oath">
+									<label>
+										<input type="checkbox" /><span>*** Misty Step @</span></label>
+								</li>
+								<li data-page="270" class="">
+									<label>
+										<input type="checkbox" /><span>Protection from Poison</span> </label>
+								</li>
+								<li data-page="289" class="">
+									<label>
+										<input type="checkbox" /><span>Zone of Truth</span></label>
+								</li>
+							</ul>
+						</li>
+					</ol>
+
+					<div class="spell">
+						<h2>Bane</h2>
+						<div>
+							<h3>Description</h3>
+							<p>Up to three creatures of your choice that you can see within range must make Charisma saving throws. Whenever a target that fails this saving throw makes an Attack roll or a saving throw before the spell ends, the target must roll a d4 and subtract the number rolled from the Attack roll or saving throw.</p>
+							<p>At Higher Levels: When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.</p>
+						</div>
+						<table>
+							<caption>Attributes</caption>
+							<tr>
+								<td>Range</td>
+								<td>30 ft</td>
+							</tr>
+							<tr>
+								<td>Components</td>
+								<td>V S M</td>
+							</tr>
+							<tr>
+								<td>Material</td>
+								<td>A drop of blood</td>
+							</tr>
+							<tr>
+								<td>Duration</td>
+								<td>Up to 1 minute</td>
+							</tr>
+							<tr>
+								<td>Casting Time</td>
+								<td>1 action</td>
+							</tr>
+							<tr>
+								<td>Level</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>School</td>
+								<td>Enchantment</td>
+							</tr>
+							<tr>
+								<td>Classes</td>
+								<td>Bard, Cleric</td>
+							</tr>
+							<tr>
+								<td>Save</td>
+								<td>Charisma</td>
+							</tr>
+							<tr>
+								<td>Concentration</td>
+								<td>Yes</td>
+							</tr>
+						</table>
+					</div>
+					<div class="spell">
+						<h2>Bless</h2>
+						<div>
+							<h3>Description</h3>
+							<p>You bless up to three creatures of your choice within range. Whenever a target makes an Attack roll or a saving throw before the spell ends, the target can roll a d4 and add the number rolled to the Attack roll or saving throw.</p>
+							<p>At Higher Levels: When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.</p>
+						</div>
+						<div>
+							<table>
+								<caption>Attributes</caption>
+								<tr>
+									<td>Range</td>
+									<td>30 ft</td>
+								</tr>
+								<tr>
+									<td>Components</td>
+									<td>V S M</td>
+								</tr>
+								<tr>
+									<td>Material</td>
+									<td>A sprinkling of Holy Water</td>
+								</tr>
+								<tr>
+									<td>Duration</td>
+									<td>Up to 1 minute</td>
+								</tr>
+								<tr>
+									<td>Casting Time</td>
+									<td>1 action</td>
+								</tr>
+								<tr>
+									<td>Level</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>School</td>
+									<td>Enchantment</td>
+								</tr>
+								<tr>
+									<td>Classes</td>
+									<td>Cleric, Paladin</td>
+								</tr>
+								<tr>
+									<td>Concentration</td>
+									<td>Yes</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="spell">
+						<h2>Cure Wounds</h2>
+						<p>A creature you touch regains a number of hit points equal to <span class="clickdice">d8 + <span data-formula="spellcasting_ability_modifier">your spellcasting ability modifier</span></span>. This spell has no effect on Undead or constructs.</p>
+						<p>At Higher Levels: When you cast this spell using a spell slot of 2nd level or higher, the Healing increases by 1d8 for each slot level above 1st.</p>
+						<table>
+							<caption>Attributes</caption>
+							<tr>
+								<td>Range</td>
+								<td>Touch</td>
+							</tr>
+							<tr>
+								<td>Components</td>
+								<td>V S</td>
+							</tr>
+							<tr>
+								<td>Duration</td>
+								<td>Instantaneous</td>
+							</tr>
+							<tr>
+								<td>Casting Time</td>
+								<td>1 action</td>
+							</tr>
+							<tr>
+								<td>Level</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>School</td>
+								<td>Evocation</td>
+							</tr>
+							<tr>
+								<td>Classes</td>
+								<td>Bard, Cleric, Druid, Paladin, Ranger</td>
+							</tr>
+							<tr>
+								<td>Healing</td>
+								<td>1d8</td>
+							</tr>
+							<tr>
+								<td>Add Casting Modifier</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>Higher Spell Slot Dice</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>Higher Spell Slot Die</td>
+								<td>d8</td>
+							</tr>
+						</table>
+					</div>
+					<div class="spell">
+						<h2>Hold Person	</h2> 2nd-leveI enchantment Casting Time: 1 action Range: 60 feet Components: V,S. M (a small, straight piece of iron) Duration: Concentration. up to 1 minute Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns. the target can make another Wisdom saving throw. On a success. the spell ends on the target. At Higher Leveis. When you cast this spell using a spell slot of 3rd levei or higher, you can target one additional humanoid for each slot leveI above 2nd. The humanoids must be within 30 feet of each other when you target them
+					</div>
+				</article>
+				<article id="paladin">
+					<header>Paladin</header>
+					<p>Clad in plate armor that gleams in the sunlight despite the dust and grime of long travei, a human lays down her sword and shield and places her hands on a mortally wounded mano Divine radiance shines from her hands, the man's wounds knit closed, and his eyes open wide with amazement.</p>
+					<p>A dwarf crouches behind an outcrop, his black cloak making him nearly invisible in the night, and watches an orc war band celebrating its recent victory. Silently, he stalks into their midst and whispers an oath, and two orcs are dead before they even realize he is there.</p>
+					<p>Silver hair shining in a shaft of light that seems to illuminate only him, an elf laughs with exultation. His spear flashes like his eyes as he jabs again and again at a twisted giant, until at last his light overcomes its hideous darkness.</p>
+					<p>Whatever their origin and their mission, paladins are united by their oaths to stand against the forces of evil. Whether sworn before a god's altar and the witness of a priest, in a sacred glade before nature spirits and fey beings, or in a moment of desperation and grief with the dead as the only witness, a paladin's oath is a powerful bond. lt is a source of power that turns a devout warrior into a blessed champion.</p>
+					<h2>The Cause Of Righteousness</h2>
+					<p>A paladin swears to uphold justice and righteousness, to stand with the good things of the world against the encroaching darkness, and to hunt the forces of evil wherever they lurk. Different paladins focus on various aspects of the cause of righteousness, but all are bound by the oaths that grant them power to do their sacred work. Although many paladins are devoted to gods of good, a paladin's power comes as much from a commitment to justice itself as it does from a god.</p>
+					<p>Paladins train for years to learn the skills of combat, mastering a variety of weapons and armor. Even so, their martial skills are secondary to the magical power they wield: power to heal the sick and injured, to smite the wicked and the undead, and to protect the innocent and those who join them in the fight for justice.</p>
+					<h2>Beyond The Mundane Life</h2>
+					<p>Almost by definition, the life of a paladin is an adventuring life. Unless a lasting injury has taken him ar her away from adventuring for a time, every paladin lives on the front lines of the cosmic struggle against evil. Fighters are rare enough among the ranks of the militias and armies of the world, but even fewer people can c1aim the true calling of a paladin. When they do receive the call, these warriors turn from their former occupations and take up arms to fight evil. Sometimes their oaths lead them into the service of the crown as leaders of elite groups of knights, but even then their loyalty is first to the cause of righteousness, not to crown and country.</p>
+					<p>Adventuring paladins take their work seriously. A delve into an ancient ruin or dusty crypt can be a quest driven bya higher purpose than the acquisition of treasure. Evillurks in dungeons and primeval forests, and even the smallest victory against it can tilt the cosmic balance away from oblivion.</p>
+					<h2>Creating a Paladin</h2>
+					<p>The most important aspect of a paladin character is the nature of his or her holy quest. Although the class features related to your oath don't appear until you reach 3<sup>rd</sup> level, plan ahead for that choice by reading the oath descriptions at the end of the class. Are you a devoted servant of good. loyal to the gods of justice and honor, a holy knight in shining armor venturing forth to smite evil? Are you a glorious champion of the light, cherishing everything beautiful that stands against the shadow, a knight whose oath descends from traditions older than many of the gods? Or are you an embittered loner sworn to take vengeance on those who have done great evil, sent as an angel of death by the gods or driven by your need for revenge? Appendix B lists many deities worshiped by paladins throughout the multiverse, such as Torm, Tyr, Heironeous, Paladine, Kiri-Jolith, Dol Arrah, the Silver Flame, Bahamut, Athena, Re-Horakhty, and Heimdall.</p>
+					<p>How did you experience your call to serve as a paladin? Did you hear a whisper from an unseen god or angel while you were at prayer? Did another paladin sense the potential within you and decide to train you as a squire? Or did some terrible event-the destruction of your home, perhaps- drive you to your quests? Perhaps you stumbled into a sacred grove or a hidden elven enclave and found yourself called to protect all such refuges of goodness and beauty. Or you might have known from your earliest memories that the paladin's life was your calling, almost as if you had been sent into the world with that purpose stamped on your soul.</p>
+					<p>How did you experience your call to serve as a paladin? Did you hear a whisper from an unseen god or angel while you were at prayer? Did another paladin sense the potential within you and decide to train you as a squire? Or did some terrible event-the destruction of your home, perhaps- drive you to your quests? Perhaps you stumbled into a sacred grove or a hidden elven enclave and found yourself called to protect all such refuges of goodness and beauty. Or you might have known from your earliest memories that the paladin's life was your calling, almost as if you had been sent into the world with that purpose stamped on your soul.</p>
+					<p>As guardians against the forces of wickedness, paladins are rarely of any evil alignment. Most of them walk the paths of charity and justice. Consider how your alignment colors the way you pursue your holy quest and the manner in which you conduct yourself before gods and mortals. Your oath and alignment might be in harmony, or your oath might represent standards of behavior that you have not yet attained.</p>
+					<h2>Quick Build</h2>
+					<p>You can make a paladin quickly by following these suggestions. First, Strength should be your highest ability score, followed by Charisma. Second, choose the noble background.</p>
+				</article>
+				<article>
+					<header>Class Features</header>
+					<p>As a paladin, you gain the following class features.</p>
+					<h3>Hit Points</h3>
+					<ul>
+						<li><strong>Hit Dice</strong>: <span class="de">1d10</span> per paladin level</li>
+						<li><strong>Hit Points at 1<sup>st</sup> Level</strong>: 10 + your Constitution modifier</li>
+						<li><strong>Hit Points at Higher Levels</strong>: <span class="de">1d10</span> (or 6) + your <span class="mod">Constitution modifier</span> per paladin level after 1<sup>st</sup></li>
+					</ul>
+					<h3>Proficiencies</h3>
+					<ul>
+						<li><strong>Armor</strong>: All armor, shields</li>
+						<li><strong>Weapons</strong>: Simple weapons, martial weapons</li>
+						<li><strong>Tools</strong>: None</li>
+						<li><strong>Saving Throws</strong>: <span class="score">Wisdom</span>, <span class="score">Charisma</span></li>
+						<li><strong>Skills</strong>: Choose two from <a href="#athletics">Athletics</a>, <a href="#insight">Insight</a>, <a href="#intimidation">Intimidation</a>, <a href="#medicine">Medicine</a>, <a href="#persuasion">Persuasion</a>, and <a href="#religion">Religion</a></li>
+					</ul>
+					<h3>Equipment</h3>
+					<p>You start with the following equipment, in addition to the equipment granted by your background:</p>
+					<ul>
+						<li>(a) a martial weapon and a shield or (b) two martial weapons</li>
+						<li>(a) fivejavelins or (b) any simpIe melee weapon</li>
+						<li>(a)a priest's pack or (b) an explorer's pack</li>
+						<li>Chain mail and a holy symbol</li>
+					</ul>
+					<h2>Divine Sense</h2>
+					<p>The presence of strong evil registers on your senses like a noxious odor, and powerful good rings like heavenly music in your ears. As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type (celestial, fiend, or undead) of any being whose presence you sense, but not its identity (the vampire Count Strahd von Zarovich, for instance). Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the hallow spell.</p>
+					<p>You can use this feature a number of times equal to <span data-formula="1+cha.modifier"><span class="bonus">1+</span> your <span class="statmod">Charisma modifier</span></span>. When you finish a long rest, you regain all expended uses.</p>
+					<h2>Lay on Hands</h2>
+					<p>Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your <span data-formula="paladin.level*5"><span class="paladin_level">paladin level</span> &times; <span class="number">5</span></span>.</p>
+					<p>As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.</p>
+					<p>Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multipIe diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one.</p>
+					<p>This feature has no effect on undead and constructs.</p>
+					<h2>Fighting Style</h2>
+					<p>At 2<sup>nd</sup> level, you adopt a style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.</p>
+					<div class="nonchoisi">
+						<h3>Defense</h3>
+						<p>While you are wearing armor, you gain a +1 bonus to AC.</p>
+					</div>
+					<div class="nonchoisi">
+						<h3>Dueling</h3>
+						<p>When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.</p>
+					</div>
+					<div class="choisi">
+						<h3>Great Weapon Fighting</h3>
+						<p>When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll. The weapon must have the two-handed or versatile property for you to gain this benefit.</p>
+					</div>
+					<div class="nonchoisi">
+						<h3>Protection</h3>
+						<p>When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll.</p>
+						<p>You must be wielding a shield.</p>
+					</div>
+					<h2>Spellcasting</h2>
+					<p>By 2<sup>nd</sup> level, you have learned to draw on divine magic through meditation and prayer to cast spells as a cleric does. See chapter 10 for the general rules of spellcasting and chapter 11 for the paladin spell list.</p>
+					<h3>Preparing and Casting Spells</h3>
+					<p>The Paladin table shows how many spell slots you have to cast your spells. To cast one of your paladin spells of 1<sup>st</sup> level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.</p>
+					You prepare the list of paladin spells that are available for you to cast, choosing from the paladin spelllist. When you do so, choose a number of paladin spells equal to your <span class="statmod">Charisma modifier</span> + half your paladin level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you are a 5th-level paladin, you have four 1<sup>st</sup>-level and two 2<sup>nd</sup>-level spell slots. With a Charisma of 14, your list of prepared spells can include four spells of 1<sup>st</sup> or 2<sup>nd</sup> level, in any combination. If you prepare the 1<sup>st</sup>-level spell cure wounds, you can cast it using a 1<sup>st</sup>-level or a 2<sup>nd</sup>-level slot. Casting the spell doesn't remove it from your list of prepared spells.
+					<p>You can change your list of prepared spells when you finish a long rest. Preparing a new list of paladin spells requires time spent in prayer and meditation: at least 1 minute per spelllevel for each spell on your list.</p>
+					<h3>Spellcasting Ability</h3>
+					<p>Charisma is your spellcasting ability for your paladin spells, since their power derives from the strength of your convictions. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a paladin spell you cast and when making an attack roll with one.</p>
+					<p><strong>Spell save DC</strong> = 8 + your <span class="proficiency_bonus">proficiency bonus</span> + your <span class="statmod">Charisma modifier</span></p>
+					<p><strong>Spell attack modifier</strong> = your <span class="proficiency_bonus">proficiency bonus</span> + your <span class="statmod">Charisma modifier</span></p>
+					<h3>Spellcasting Focus</h3>
+					<p>You can use a holy symbol (found in chapter 5) as a spellcasting focus for your paladin spells.</p>
+					<h2>Divine Smite</h2>
+					<p>Starting at 2<sup>nd</sup> level, when you hit a creature with a melee weapon attack, you can expend one paladin spell slot to deal radiant damage to the target, in addition to the weapon's damage. The extra damage is 2d8 for a 1<sup>st</sup>-level spell slot, plus 1d8 for each spelllevel higher than 1<sup>st</sup>, to a maximum of 5d8. The damage increases by 1d8 if the target is an undead or a fiend.</p>
+					<h2>Divine Health</h2>
+					<p>By 3<sup>rd</sup> level, the divine magic flowing through you makes you immune to disease.</p>
+					<h2>Sacred Oath</h2>
+					<p>When you reach 3<sup>rd</sup> level, you swear the oath that binds you as a paladin forever. Up to this time you have been in a preparatory stage, committed to the path but not yet sworn to it. Now you choose the Oath of Devotion, the Oath of the Ancients, ar the Oath of Vengeance, all detailed at the end of the c1ass description.</p>
+					<p>Your choice grants you features at 3<sup>rd</sup> level and again at 7<sup>th</sup>, 15<sup>th</sup>, and 20<sup>th</sup> level. Those features include oath spells and the Channel Divinity feature.</p>
+					<h3>Oath Spells</h3>
+					<p>Each oath has a list of associated spells. You gain access to these spells at the levels specified in the oath description. Once you gain access to an oath spell, you always have it prepared. Oath spells don't count against the number of spells you can prepare each day. </p>
+					<p>If you gain an oath spell that doesn't appear on the paladin spelllist, the spell is nonetheless a paladin spell for you.</p>
+					<h3>Channel Divinity</h3>
+					<p>Your oath allows you to channel divine energy to fuel magical effects. Each Channel Divinity option provided by your oath explains how to use it.</p>
+					<p>When you use your Channel Divinity, you choose which option to use. You must then finish a short ar long rest to use your Channel Divinity again.</p>
+					<p>Some Channel Divinity effects require saving throws. When you use such an effect from this c1ass, the DC equals your paladin spell save DC.</p>
+					<h3>Ability Score Improvement</h3>
+					<p>When you reach 4<sup>th</sup> level, and again at 8<sup>th</sup>, 12<sup>th</sup>, 16<sup>th</sup>, and 19<sup>th</sup> level, you can increase one ability score of your choice by 2, ar you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.</p>
+					<h3>Extra Attack</h3>
+					<p>Beginning at 5<sup>th</sup> level, you can attack twice, instead of once, whenever you take the Attack action on your turn.</p>
+					<h3>Aura of Protection</h3>
+					<p>Starting at 6<sup>th</sup> level, whenever you ar a friendly creature within 10 feet of you must make a saving throw, the creature gains a bonus to the saving throw equal to your Charisma modifier (with a minimum bonus of +1). You must be conscious to grant this bonus.</p>
+					<p>At 18<sup>th</sup> level, the range of this aura increases to 30 feet.</p>
+					<h3>Aura of Courage</h3>
+					<p>Starting at 10<sup>th</sup> level. you and friendly creatures within 10 feet of you can't be frightened while you are conscious.</p>
+					<p>At 18<sup>th</sup> level, the range of this aura increases to 30 feet.</p>
+					<h3>Improved Divine Smite</h3>
+					<p>By 11<sup>th</sup> level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra <span class="de">1d8</span> radiant damage. If you also use your Divine Smite with an attack, you add this damage to the extra damage of your Divine Smite.</p>
+					<h3>Cleansing Touch</h3>
+					<p>Beginning at 14<sup>th</sup> level, you can use your action to end one spell on yourself ar on one willing creature that you touch.</p>
+					<p>You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest</p>
+				</article>
+				<article id="feats">
+					<header>Feats</header>
+					<h2>War Caster</h2>
+					<p>You have practiced casting spells in the midst ofcombat, learning techniques that grant you the following benefits:</p>
+					<ul>
+						<li>You have advantage on Constitution saving throws that you make to maintain your concentration on a spell when you take damage.</li>
+						<li>You can perform the somatic components of spells even when you have weapons or a shield in one or both hands.</li>
+						<li>When a hoslile crealure's movement provokes an opportunity attack from you, you can use your reaction to cast a spell at the creature, rather than making an opportunity attack. The spellmust have a casting time of 1 action and must target only that creature.</li>
+					</ul>
+				</article>
+				<article id="sacred_oath">
+					<header>Sacred Oath</header>
+					<h2>Oath of Vengeance</h2>
+					<p>The Oath of Vengeance is a solemn commitment to punish those who have committed a grievous sin. When evil forces slaughter helpless villagers, when an entire people turns against the will of the gods. when a thieves' guild grows too violent and powerful, when a dragon rampages through the countryside-at times like these, paladins arise and swear an Oath of Vengeance to set right that which has gone wrong. To these paladins &ndash; sometimes called avengers or dark knights &ndash; their own purity is not as important as delivering justice.</p>
+					<h3>Tenets of Vengeance</h3>
+					<p>The tenets of the Oath of Vengeanee vary by paladin, but all the tenets revolve around punishing wrongdoers by any means necessary. Paladins who uphold these tenets are willing to saerifiee even their own righteousness to mete out justice upon those who do evil, so the paladins are often neutral or lawful neutral in alignment. The core principles of the tenets are brutally simple.</p>
+					<ul>
+						<li><strong>Fight the Greater Evil.</strong> Faced with a choice of fighting my sworn foes or combating a lesser evil, I choose the greater evil.</li>
+						<li><strong>No Mercy for the Wicked.</strong> Ordinary foes might win my mercy, but my sworn enemies do not.</li>
+						<li><strong>By Any Means Necessary.</strong> My qualms ean't get in the way of exterminating my foes.</li>
+						<li><strong>Restitution.</strong> If my foes wreak ruin on the world, it is because I failed to stop them. I must help those harmed by their misdeeds.</li>
+					</ul>
+					<h3>Oath Spells</h3>
+					<p>You gain oath spells at the paladin levels listed.</p>
+					<table>
+						<caption>Oath of Vengeance spells</caption>
+						<thead>
+							<tr>
+								<th>Paladin Level</th>
+								<th>Spells</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="level3">
+								<td>3<sup>rd</sup></td>
+								<td><a href="#bane">bane</a>, <a href="#hunter_s_mark">hunter's mark</a></td>
+							</tr>
+							<tr class="level5">
+								<td>5<sup>th</sup></td>
+								<td><a href="#hold_person">hold person</a>, <a href="#misty_step">misty step</a></td>
+							</tr>
+							<tr class="level9">
+								<td>9<sup>th</sup></td>
+								<td><a href="#haste">haste</a>, <a href="#protection_from_energy">protection from energy</a></td>
+							</tr>
+							<tr class="level13">
+								<td>13<sup>th</sup></td>
+								<td><a href="#banishment">banishment</a>, <a href="#dimension_door">dimension door</a></td>
+							</tr>
+							<tr class="level17">
+								<td>17<sup>th</sup></td>
+								<td><a href="#hold_monster">hold monster</a>, <a href="#scrying">scrying</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="level3">
+						<h3>Channel Divinity</h3>
+						<p>When you take this oath at 3<sup>rd</sup> level, you gain the following two Channel Divinity options.</p>
+						<p><strong>Abjure Enemy.</strong> As an action, you present your holy symbol and speak a prayer of denunciation, using your Channel Divinity. Choose one creature within 60 feet of you that you can see. That creature must make a Wisdom saving throw, unless it is immune to being frightened. Fiends and undead have disadvantage on this saving throw.</p>
+						<p>On a failed save, the creature is frightened for 1 minute or until it takes any damage. While frightened, the creature's speed is 0, and it can't benefit from any bonus to its speed.</p>
+						<p>On a successful save, the creature's speed is halved for 1 minute or until the creature takes any damage.</p>
+						<p><strong>Vow of Enmity.</strong> As a bonus action, you can utter a vow of enmity against a creature you can see within 10 feet of you, using your Channel Divinity. You gain advantage on attack rolls against the creature for 1 minute or until it drops to 0 hit points or falls unconscious.</p>
+					</div>
+					<div class="level7">
+						<h3>Relentless Avenger</h3>
+						<p>By 7<sup>th</sup> level, your supernatural focus helps you close off a foe's retreat. When you hit a creature with an opportunity attack, you can move up to half your speed immediately after the attack and as part of the same reaction. This movement doesn't provoke opportunity attacks.</p>
+					</div>
+					<div class="level15">
+						<h3>Soul of Vengeance</h3>
+						<p>Starting at 15<sup>th</sup> level, the authority with which you speak your Vow of Enmity gives you greater power over your foe. When a creature under the effect of your Vow of Enmity makes an attack, you can use your reaction to make a melee weapon attack against that creature if it is within range.</p>
+					</div>
+					<div class="level20">
+						<h3>Avenging Angel</h3>
+						<p>At 20<sup>th</sup> level, you can assume the form of an angelic avenger. Using your action, you undergo a transformation. For 1 hour, you gain the following benefits:</p>
+						<ul>
+							<li>Wings sprout from your back and grant you a flying speed of 60 feet.</li>
+							<li>You emanate an aura of menace in a 30-foot radius. The first time any enemy creature enters the aura or starts its turn there during a battle, the creature must succeed on a Wisdom saving throw or become frightened of you for 1 minute or until it takes any damage. Attack rolls against the frightened creature have advantage.</li>
+						</ul>
+						<p>Once you use this feature, you can't use it again until you finish a long rest.</p>
+					</div>
+				</article>
+				<article>
+					<header>Particularités</header>
+					<h2 id="boots_of_striding_and_springing">Boots of Striding and Springing (<a href="https://roll20.net/compendium/dnd5e/Boots%20of%20Striding%20and%20Springing#content" target="_blank">source</a>)</h2>
+					<p>Requires Attunement</p>
+					<p>While you wear these boots, your walking speed becomes 30 feet, unless your walking speed is higher, and your speed isn't reduced if you are encumbered or wearing Heavy Armor. </p>
+					<p>In addition, you can <span data-calc="3*strstat">jump</span> three times the <span data-calc="strstat">normal distance</span>, though you can't jump farther than your remaining Movement would allow.</p>
+				</article>
+			</div>
+			<div class="colonne">
+				<article id="sommaire">
+					<header>Sommaire</header>
+				</article>
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>
