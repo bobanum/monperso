@@ -1,13 +1,16 @@
 ﻿64
--12=52
--3 = 49
+-11-5-15-5=28
++21 = 49 (anton)
+
+
+
 
 
 
 
 Utilisables
-n1:43
-n2:32
+n1:43210
+n2:3
 
 
 sorts à apprendre: 7
@@ -16,7 +19,8 @@ Lay on hand : (L*5) 40
 
 
 
-@ = 
+@ = Action
+β = Bonus action
 ¢ = 
 ¦ = Oath of vengeance
 

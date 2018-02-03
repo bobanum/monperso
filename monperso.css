@@ -33,8 +33,7 @@ body {
   margin: .25em;
   padding: .25em;
 }
-.encadre h3,
-.encadre caption {
+.encadre h3 {
   font-size: 1.1em;
   align-self: center;
   text-shadow: 1px 1px 1px black;
@@ -48,6 +47,7 @@ ul {
 }
 div.interface {
   margin: 0 auto;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -196,9 +196,7 @@ input[type=number] {
   padding: .25em;
 }
 #others li h3,
-#skills li h3,
-#others li caption,
-#skills li caption {
+#skills li h3 {
   font-size: 1.1em;
   align-self: center;
   text-shadow: 1px 1px 1px black;
@@ -216,8 +214,7 @@ input[type=number] {
   margin: .25em;
   padding: .25em;
 }
-#informations li h3,
-#informations li caption {
+#informations li h3 {
   font-size: 1.1em;
   align-self: center;
   text-shadow: 1px 1px 1px black;
@@ -239,8 +236,7 @@ input[type=number] {
   margin: .25em;
   padding: .25em;
 }
-#statistics li h3,
-#statistics li caption {
+#statistics li h3 {
   font-size: 1.1em;
   align-self: center;
   text-shadow: 1px 1px 1px black;
@@ -306,8 +302,27 @@ span.diceresult:after {
   left: .1em;
   box-shadow: inherit;
 }
-.collapse ~ * {
-  display: none;
+[id] > h1,
+[id] > h2,
+[id] > h3,
+article > header {
+  cursor: pointer;
+}
+[id] > h1:after,
+[id] > h2:after,
+[id] > h3:after,
+article > header:after {
+  content: "\25c2";
+  float: right;
+  font-style: normal;
+  line-height: 1;
+  color: #666;
+}
+.collapse > *:first-child ~ * {
+  display: none !important;
+}
+.collapse > *:first-child:after {
+  content: "\25be";
 }
 div.spell {
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -315,16 +330,30 @@ div.spell {
   margin: .25em;
   padding: .25em;
 }
-div.spell h3,
-div.spell caption {
+div.spell h3 {
   font-size: 1.1em;
   align-self: center;
   text-shadow: 1px 1px 1px black;
 }
 div.spell table {
+  float: right;
+  width: 14em;
   border-collapse: collapse;
+  margin-left: .5em;
+}
+div.spell table caption {
+  text-align: center;
+}
+div.spell table th {
+  text-align: right;
+  font-size: smaller;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+div.spell table tr {
+  border: 1px solid white;
+  border-width: 1px 0;
 }
 div.spell table td,
 div.spell table th {
-  border: 1px solid white;
+  padding: 0 .25em;
 }

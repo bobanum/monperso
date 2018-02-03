@@ -271,21 +271,68 @@ class Perso {
 		var elements = document.querySelectorAll("input[id]");
 		return elements;
 	}
-	static setCollapse() {
-		var elements = document.querySelectorAll("div>h2,article>h1");
+	static uncollapseElement(element, state) {
+		var id = element.getAttribute("id");
+		if (state === undefined) {
+			state = !this.uncollapsed[id];
+		}
+		if (state) {
+			this.uncollapsed[id] = true;
+			element.classList.remove("collapse");
+		} else {
+			delete this.uncollapsed[id];
+			element.classList.add("collapse");
+		}
+		window.localStorage.uncollapsed = JSON.stringify(this.uncollapsed);
+		return state;
+	}
+	static uncollapseChildren(parentNode, state) {
+		let elements = parentNode.querySelectorAll(this.collapsibleSelector);
+		elements.forEach((element)=>this.uncollapseElement(element.parentNode, state));
+	}
+	static initCollapse() {
+		var elements = document.querySelectorAll(this.collapsibleSelector);
 		elements.forEach(function (e) {
-			e.addEventListener("click", Perso.evt.h2.click);
-			e.classList.add("collapse");
-		});
+			var id = e.parentNode.getAttribute("id");
+			e.addEventListener("click", this.evt.collapsible.click);
+			if (!this.uncollapsed[id]) {
+				e.parentNode.classList.add("collapse");
+			}
+		}, this);
 	}
-	static ajouterSommaire() {
-		var resultat = this.creerSommaire();
-		document.getElementById("sommaire").appendChild(resultat);
+	static getSave(element) {
+		var id = element.getAttribute("id");
+		debugger;
 	}
-	static creerSommaire() {
+	static setSave(element, value) {
+		var id = element.getAttribute("id");
+		var original = this.data[id];
+		debugger;
+		switch (element.type) {
+			case "radio": case "checkbox":
+
+			break;
+			case "TEXTAREA":
+
+			break;
+			default:
+		}
+		debugger;
+	}
+	static initSave() {
+		var elements = document.querySelectorAll("*.save");
+		elements.forEach(function (e) {
+			e.addEventListener("click", this.evt.save.blur);
+		}, this);
+	}
+	static addSummary() {
+		var resultat = this.createSummary();
+		document.getElementById("summary").appendChild(resultat);
+	}
+	static createSummary() {
 		var resultat;
 		resultat = document.createElement("ul");
-		var headers = document.querySelectorAll("article[id]>header");
+		var headers = document.querySelectorAll("article[id]:not([id=summary])>header");
 		headers.forEach(function (header) {
 			let li = resultat.appendChild(document.createElement("li"));
 			let a = li.appendChild(document.createElement("a"));
@@ -295,28 +342,46 @@ class Perso {
 		return resultat;
 	}
 	static init() {
+		this.uncollapsed = {};
+		if (window.localStorage.uncollapsed) {
+			this.uncollapsed = JSON.parse(window.localStorage.uncollapsed);
+		} else {
+			window.localStorage.uncollapsed = JSON.stringify(this.uncollapsed);
+		}
 		this.data = {};
+		if (window.localStorage.data) {
+			this.data = JSON.parse(window.localStorage.data);
+		} else {
+			window.localStorage.data = JSON.stringify(this.data);
+		}
+		this.collapsibleSelector = "[id]>h1,[id]>h2,[id]>h3,article>header";
 		this.symbols = {
 			"002B":"+",
 			"2212":"−",
 			"00D7":"×",
 			"00F7":"÷",
-			"2308":"⌉",
-			"2309":"⌈",
-			"230A":"⌊",
-			"230B":"⌋",
-			"27E6":"⟦",
-			"27E7":"⟧"
+			"2308":"⌉", "2309":"⌈", //ceil
+			"230A":"⌊", "230B":"⌋", //floor
+			"27E6":"⟦", "27E7":"⟧" //round
 		};
 		this.evt = {
 			input: {
 				blur: function () {
-					this.obj.getData();
+					debugger;
+					//this.obj.getData();
 				}
 			},
-			h2: {
-				click: function () {
-					this.classList.toggle("collapse");
+			collapsible: {
+				click: function (e) {
+					var state = Perso.uncollapseElement(this.parentNode);
+					if (e.altKey) {
+						Perso.uncollapseChildren(this.parentNode, state);
+					}
+				}
+			},
+			save: {
+				blur: function () {
+					Perso.setSave(this);
 				}
 			}
 		};
@@ -328,8 +393,9 @@ class Perso {
 		window.addEventListener("load", function () {
 			var perso = new Perso();
 			perso.init();
-			Perso.setCollapse();
-			Perso.ajouterSommaire();
+			Perso.initCollapse();
+			Perso.initSave();
+			Perso.addSummary();
 		});
 	}
 }
