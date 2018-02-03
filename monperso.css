@@ -312,7 +312,7 @@ article > header {
 [id] > h2:after,
 [id] > h3:after,
 article > header:after {
-  content: "\25c2";
+  content: "\25be";
   float: right;
   font-style: normal;
   line-height: 1;
@@ -322,7 +322,7 @@ article > header:after {
   display: none !important;
 }
 .collapse > *:first-child:after {
-  content: "\25be";
+  content: "\25c2";
 }
 div.spell {
   border: 1px solid rgba(255, 255, 255, 0.5);
