@@ -281,6 +281,9 @@ article>header {
 		color: #666;
 	}
 }
+[data-formula] {
+	border-bottom: 3px double cyan;
+}
 .collapse > *:first-child {
 	& ~ * {
 		display: none !important;
@@ -289,7 +292,7 @@ article>header {
 		content: "\25be";
 	}
 }
-div.spell {
+.spell {
 	.encadre;
 	div.body {
 		//		display: flex;
@@ -318,4 +321,21 @@ div.spell {
 //			border: 1px solid white;
 		}
 	}
+}
+span.scroll_on {
+	font-size: 16px;
+	display: inline-block;
+	width: 3em;
+	height: 1em;
+	background-size: 1em auto;
+	background-image: url(images/icon_scroll.svg);
+}
+span.scroll_off {
+	font-size: 16px;
+	background-size: 1em auto;
+	display: inline-block;
+	width: 2em;
+	height: 1em;
+	background-image: url(images/icon_scroll.svg);
+	background-position: 0 -1em;
 }

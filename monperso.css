@@ -318,42 +318,62 @@ article > header:after {
   line-height: 1;
   color: #666;
 }
+[data-formula] {
+  border-bottom: 3px double cyan;
+}
 .collapse > *:first-child ~ * {
   display: none !important;
 }
 .collapse > *:first-child:after {
   content: "\25be";
 }
-div.spell {
+.spell {
   border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.2);
   margin: .25em;
   padding: .25em;
 }
-div.spell h3 {
+.spell h3 {
   font-size: 1.1em;
   align-self: center;
   text-shadow: 1px 1px 1px black;
 }
-div.spell table {
+.spell table {
   float: right;
   width: 14em;
   border-collapse: collapse;
   margin-left: .5em;
 }
-div.spell table caption {
+.spell table caption {
   text-align: center;
 }
-div.spell table th {
+.spell table th {
   text-align: right;
   font-size: smaller;
   border-right: 1px solid rgba(255, 255, 255, 0.4);
 }
-div.spell table tr {
+.spell table tr {
   border: 1px solid white;
   border-width: 1px 0;
 }
-div.spell table td,
-div.spell table th {
+.spell table td,
+.spell table th {
   padding: 0 .25em;
+}
+span.scroll_on {
+  font-size: 16px;
+  display: inline-block;
+  width: 3em;
+  height: 1em;
+  background-size: 1em auto;
+  background-image: url(images/icon_scroll.svg);
+}
+span.scroll_off {
+  font-size: 16px;
+  background-size: 1em auto;
+  display: inline-block;
+  width: 2em;
+  height: 1em;
+  background-image: url(images/icon_scroll.svg);
+  background-position: 0 -1em;
 }
