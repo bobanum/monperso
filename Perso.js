@@ -71,7 +71,7 @@ class Perso {
 		}
 		return formula;
 	}
-	parseDice(dice) {
+	parseDice(dice, rtnEval) {
 		var die;
 		if (die = dice.match(/([0-9]*)[d|D]([0-9]+)/), die) {
 			let val = this.draw(die[2], die[1]);
@@ -79,7 +79,13 @@ class Perso {
 		}
 		dice = this.parseFormula(dice);
 		console.log(dice);
-		return eval(dice);
+		if (rtnEval === 0) {
+			return dice;
+		} else if (rtnEval === 1) {
+			return eval(dice);
+		} else {
+			return dice + "=" + eval(dice);
+		}
 	}
 	draw(die, nb, bonus) {
 		var result, i;
@@ -189,7 +195,7 @@ class Perso {
 				click: function () {
 					var val;
 					if (this.hasAttribute("data-dice")) {
-						val = this.hasAttribute("data-dice");
+						val = this.getAttribute("data-dice");
 					} else {
 						val = this.textContent;
 					}
