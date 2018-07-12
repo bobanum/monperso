@@ -1,10 +1,12 @@
 ﻿64
--11=53
+-11=53+20 temporaires
+-6(sur max)-3
+
 
 
 Utilisables
-n1:43
-n2:32
+n1:432
+n2:321
 n3:2
 
 sorts à apprendre: 7
@@ -29,6 +31,8 @@ chez les kobolds :
 50gp de cossins dont 10 pierres semi precieuses @2gp
 Cornet des kobolds
 Talisment +1 sur attaque pendant 1 min (one shot)
+barrique de brandy de centaure 19/20 shots
+
 
 
 

@@ -28,7 +28,6 @@ body {
   order: 1;
 }
 .encadre {
-  border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.2);
   margin: .25em;
   padding: .25em;
@@ -74,6 +73,15 @@ div.interface > footer {
   background-color: black;
   color: white;
 }
+div.interface > header {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+}
+div.interface > header h1 {
+  font-size: 60px;
+  flex: 1 0 0px;
+}
 *.colonnes {
   display: flex;
 }
@@ -111,7 +119,6 @@ article {
   flex-direction: column;
   justify-content: space-between;
   background-color: #123;
-  border: 1px solid white;
   border-radius: .5em;
   overflow: hidden;
   margin: .25em;
@@ -190,7 +197,6 @@ input[type=number] {
 #others li,
 #skills li {
   flex: 1 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.2);
   margin: .25em;
   padding: .25em;
@@ -209,7 +215,6 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.2);
   margin: .25em;
   padding: .25em;
@@ -231,7 +236,6 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.2);
   margin: .25em;
   padding: .25em;
@@ -328,7 +332,6 @@ article > header:after {
   content: "\25be";
 }
 .spell {
-  border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.2);
   margin: .25em;
   padding: .25em;

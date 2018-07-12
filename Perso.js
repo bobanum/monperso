@@ -308,12 +308,14 @@ class Perso {
 	}
 	static getSave(element) {
 		var id = element.getAttribute("id");
-		debugger;
+		console.log(id);
+//		debugger;
 	}
 	static setSave(element, value) {
 		var id = element.getAttribute("id");
 		var original = this.data[id];
-		debugger;
+		console.log(value, original);
+//		debugger;
 		switch (element.type) {
 			case "radio": case "checkbox":
 
@@ -323,7 +325,7 @@ class Perso {
 			break;
 			default:
 		}
-		debugger;
+//		debugger;
 	}
 	static initSave() {
 		var elements = document.querySelectorAll("*.save");
@@ -373,7 +375,7 @@ class Perso {
 		this.evt = {
 			input: {
 				blur: function () {
-					debugger;
+//					debugger;
 					//this.obj.getData();
 				}
 			},
